@@ -23,12 +23,15 @@ import SwiftUI
 //}
 
 struct ContentView: View {
+    let cardEmojisArray: Array<String> = ["👻","💩","🔫","🧿"]
+
+    
     var body: some View {
         HStack {
-            CardView()
-            CardView()
-            CardView()
-            CardView()
+            CardView(content: cardEmojisArray[0], isFaceUp: false)
+            CardView(content: cardEmojisArray[1], isFaceUp: false)
+            CardView(content: cardEmojisArray[2], isFaceUp: false)
+            CardView(content: cardEmojisArray[3], isFaceUp: false)
         }
         // Changes everything insode image and text
 //        .font(.largeTitle)
@@ -38,7 +41,8 @@ struct ContentView: View {
 }
     
 struct CardView: View {
-    //Pointer
+    //Pointer]
+    let content: String
     @State var isFaceUp = true
     
     
@@ -50,7 +54,7 @@ struct CardView: View {
             if isFaceUp {
                 base.foregroundColor(.white)
                 base.strokeBorder(lineWidth: 2)
-                Text("👻").font(.largeTitle)
+//                Text("👻").font(.largeTitle)
             } else {
                 base.fill()
                 }
