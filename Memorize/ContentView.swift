@@ -28,6 +28,10 @@ struct ContentView: View {
     
     var body: some View {
         HStack {
+            
+            ForEach(0..<4, id: \.self) { index in CardView(content: cardEmojisArray[index])
+                
+            }
             CardView(content: cardEmojisArray[0], isFaceUp: false)
             CardView(content: cardEmojisArray[1], isFaceUp: false)
             CardView(content: cardEmojisArray[2], isFaceUp: false)
