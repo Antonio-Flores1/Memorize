@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Defaukt atruct setup for ContentView
 //struct ContentView: View { Default
 //    var body: some View {
 //        VStack {
@@ -23,29 +24,43 @@ import SwiftUI
 //}
 
 struct ContentView: View {
-    let cardEmojisArray: Array<String> = ["👻","💩","🔫","🧿"]
-
-    
+    let cardEmojisArray: Array<String> = ["👻","🚑","🔫","🧿","💰","💊","🔫","❤️","🏃🏻‍♂️","☘️","🫡","🪴"]
+    // Not used in real code
+    @ State var cardCount = 4
     var body: some View {
-        HStack {
-            
-            ForEach(0..<4, id: \.self) { index in CardView(content: cardEmojisArray[index])
-                
+        VStack {
+            HStack {
+                ForEach(0..<cardCount, id: \.self) { index in
+                    CardView(content: cardEmojisArray[index])
+                    
+//                ForEach(0..<cardCount, id: \.self) { index in
+//                    CardView(content: cardEmojisArray[index])
+                }
             }
-            CardView(content: cardEmojisArray[0], isFaceUp: false)
-            CardView(content: cardEmojisArray[1], isFaceUp: false)
-            CardView(content: cardEmojisArray[2], isFaceUp: false)
-            CardView(content: cardEmojisArray[3], isFaceUp: false)
+            .foregroundColor(.orange)
+            
+            HStack {
+                Button("Remove Card") {
+                    cardCount -= 1
+                }
+                Spacer()
+                Button("Add Card") {
+                    cardCount += 1
+                }
+            
+            }
+            
         }
         // Changes everything insode image and text
 //        .font(.largeTitle)
-        .foregroundColor(.orange)
+//        .foregroundColor(.orange)
         .padding()
-    }
+     }
 }
     
 struct CardView: View {
-    //Pointer]
+    
+    //Pointer
     let content: String
     @State var isFaceUp = true
     
@@ -58,12 +73,12 @@ struct CardView: View {
             if isFaceUp {
                 base.foregroundColor(.white)
                 base.strokeBorder(lineWidth: 2)
-//                Text("👻").font(.largeTitle)
+                Text(content).font(.largeTitle)
             } else {
                 base.fill()
                 }
         }.onTapGesture {
-            isFaceUp = !isFaceUp
+            isFaceUp.toggle()
            }
         }
     }
