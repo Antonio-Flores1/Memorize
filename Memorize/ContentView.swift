@@ -32,14 +32,17 @@ struct ContentView: View {
             HStack {
                 ForEach(0..<cardCount, id: \.self) { index in
                     CardView(content: cardEmojisArray[index])
-                    
-//                ForEach(0..<cardCount, id: \.self) { index in
-//                    CardView(content: cardEmojisArray[index])
                 }
             }
             .foregroundColor(.orange)
             
             HStack {
+                Button(action: {
+                    cardCount -= 1
+                }, label: {
+                    Image(systemName: "rectangle.stack.badge.minus.fill")
+                })
+                Spacer()
                 Button("Remove Card") {
                     cardCount -= 1
                 }
