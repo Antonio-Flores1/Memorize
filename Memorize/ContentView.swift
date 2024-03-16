@@ -42,10 +42,8 @@ struct ContentView: View {
                 }, label: {
                     Image(systemName: "rectangle.stack.badge.minus.fill")
                 })
-                Spacer()
-                Button("Remove Card") {
-                    cardCount -= 1
-                }
+                .imageScale(.large)
+                .font(.largeTitle)
                 Spacer()
                 Button("Add Card") {
                     cardCount += 1
