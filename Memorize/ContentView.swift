@@ -38,35 +38,37 @@ struct ContentView: View {
             
             HStack {
                 Button(action: {
-                    cardCount -= 1
+                    if cardCount > 1 {
+                        cardCount -= 1
+                    }
                 }, label: {
                     Image(systemName: "rectangle.stack.badge.minus.fill")
                 })
-//                .imageScale(.large)
-//                .font(.largeTitle)
                 Spacer()
-                Button("Add Card") {
-                    cardCount += 1
-                }
+                Button(action: {
+                    if cardCount < cardEmojisArray.count {
+                        cardCount += 1
+                    }
+                }, label: {
+                    Image(systemName: "rectangle.stack.badge.plus.fill")
+                })
             
             }
             
         }
-        // Changes everything insode image and text
+        // Changes everything inside image and text
 //        .font(.largeTitle)
 //        .foregroundColor(.orange)
         .padding()
      }
+    
+    
 }
     
 struct CardView: View {
-    
     //Pointer
     let content: String
     @State var isFaceUp = true
-    
-    
-    
     var body: some View{
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12)
