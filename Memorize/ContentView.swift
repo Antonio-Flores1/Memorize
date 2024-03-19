@@ -31,6 +31,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             cards
+            Spacer()
             cardCountAdjusters
         }
         // Changes everything inside image and text
@@ -48,12 +49,13 @@ struct ContentView: View {
     }
     
     //Cards Not a view builder HStack is a view builder
-    var cards: some View{
-        HStack {
+    var cards: some View {
+        LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
             ForEach(0..<cardCount, id: \.self) { index in
                 CardView(content: cardEmojisArray[index])
             }
-        } .foregroundColor(.orange)
+        } 
+        .foregroundColor(.orange)
     }
     
     
