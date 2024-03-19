@@ -81,6 +81,7 @@ struct ContentView: View {
     }
 }
     
+
 struct CardView: View {
     //Pointer
     let content: String
