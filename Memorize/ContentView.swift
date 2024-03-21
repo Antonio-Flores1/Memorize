@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// Defaukt atruct setup for ContentView
+// Default Struct setup for ContentView
 //struct ContentView: View { Default
 //    var body: some View {
 //        VStack {
@@ -49,6 +49,7 @@ struct ContentView: View {
         .font(.largeTitle)
         .foregroundColor(.orange)
     }
+    
     
     //Cards Not a view builder HStack is a view builder
     var cards: some View {
