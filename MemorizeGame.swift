@@ -9,8 +9,12 @@ import Foundation
 
 
 struct MemoryGame<CardContent>{
+        
+    private(set) var cards: Array<Card>
     
-    var cards: Array<Card>
+    init(numberOfPairsOfCards: Int) {
+        cards = []
+    }
     
     func choose(card: Card) {
          
