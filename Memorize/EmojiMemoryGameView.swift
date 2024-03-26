@@ -23,8 +23,11 @@ import SwiftUI
 //    }
 //}
 
-struct ContentView: View {
-    let cardEmojisArray: Array<String> = ["👻","🚑", "🔫","🧿","💰","💊","🔫","❤️","🏃🏻‍♂️","☘️","🫡","🪴"]
+struct EmojiMemoryGameView: View {
+    //Bad code will change
+    var viewModel: EmojiMemoryGame = EmojiMemoryGame()
+    
+
     // Not used in real code
     @ State var cardCount = 4
     
@@ -49,8 +52,8 @@ struct ContentView: View {
     //Cards Not a view builder HStack is a view builder
     var cards: some View {
         LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
-            ForEach(cardEmojisArray.indices, id: \.self) { index in
-                CardView(content: cardEmojisArray[index])
+            ForEach(viewModel.cards.indices, id: \.self) { index in
+                CardView(card: viewModel.cards[index])
                     .aspectRatio(2/3, contentMode: .fit)
             }
         } 
@@ -62,10 +65,9 @@ struct ContentView: View {
 }
     
 
+
 struct CardView: View {
-    //Pointer
-    let content: String
-    @State var isFaceUp = true
+    var card: MemoryGame <String>.Card
     var body: some View{
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12)
@@ -73,15 +75,15 @@ struct CardView: View {
             Group {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
-                Text(content).font(.largeTitle)
-                }
-            base.fill().opacity(isFaceUp ? 0 : 1)
-        }.onTapGesture {
-            isFaceUp.toggle()
-           }
+                Text(card.content).font(.largeTitle)
+                base.fill().opacity(card.isFaceUp ? 0 : 1)
+            }
         }
     }
+}
 
-#Preview {
-    ContentView()
+struct EmojiMemoryGameView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmojiMemoryGameView()
+    }
 }
